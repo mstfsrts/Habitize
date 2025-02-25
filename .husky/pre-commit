@@ -1,6 +1,8 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+
+# npm'in bulunduğu dizini PATH'e ekleyin
+export PATH="$PATH:/usr/local/bin"
 
 # Disabled test for now until we resolve an issue with client tests
-# npm test 
-npm run pre-commit
+# $(which npm) test 
+$(which npm) run pre-commit
