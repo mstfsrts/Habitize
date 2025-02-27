@@ -4,6 +4,9 @@
   "description": "## Notable libraries",
   "main": "index.js",
   "scripts": {
+    "docker:build": "docker build -t habitize .",
+    "docker:start": "docker run -p 4000:4000 habitize",
+    "docker:dev": "docker run --rm -it -p 4000:4000 habitize sh",
     "start": "concurrently \"npm run start:server\" \"npm run dev:client\"",
     "start:server": "cd server && npm run start && cd ..",
     "start:client": "cd client && npm run dev",
@@ -48,7 +51,8 @@
   "devDependencies": {
     "axios": "^1.6.8",
     "cypress": "^13.8.1",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "prettier": "^3.5.2"
   },
   "dependencies": {
     "concurrently": "^9.1.2",

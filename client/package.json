@@ -59,6 +59,7 @@
     "@mui/material": "^6.3.1",
     "@mui/styled-engine-sc": "^6.2.1",
     "@mui/x-date-pickers": "^7.23.6",
+    "axios": "^1.8.1",
     "date-fns": "^2.28.0",
     "phosphor-react": "^1.4.1",
     "prop-types": "^15.8.1",
