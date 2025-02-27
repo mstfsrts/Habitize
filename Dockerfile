@@ -13,8 +13,7 @@ WORKDIR /server
 
 # package.json ve package-lock.json'ı kopyala ve bağımlılıkları yükle
 COPY server/package*.json ./
-RUN npm install --omit=dev
-RUN npm rebuild bcrypt --build-from-source  # bcrypti düzeltmek için ekledik
+RUN npm install
 
 # Uygulama kodunu kopyala
 COPY server ./

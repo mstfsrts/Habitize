@@ -1,6 +1,6 @@
 import AppError from "../../util/AppError.js";
 import generateJWT from "../../util/generateJWT.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import User from "../../models/User.js";
 import Session from "../../models/Session.js";
 

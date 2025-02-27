@@ -1,5 +1,5 @@
 import AppError from "../../util/AppError.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const checkPassword = async (req, res, next) => {
   try {

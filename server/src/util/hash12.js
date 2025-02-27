@@ -1,4 +1,4 @@
-import { hash } from "bcrypt";
+import { hash } from "bcryptjs";
 
 //returns a promise
 //main goal is to keep hashing salt consistent
