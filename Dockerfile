@@ -2,9 +2,14 @@
 FROM node:18 AS frontend
 WORKDIR /client
 
+# Paketleri yükle
 COPY client/package*.json ./
-RUN npm install --omit=dev
+RUN npm install
+
+# Tüm frontend kodlarını kopyala
 COPY client ./
+
+# Frontend'i build et
 RUN npm run build
 
 # 2️⃣ Backend için yeni bir Node.js container oluştur
@@ -13,20 +18,23 @@ WORKDIR /server
 
 # package.json ve package-lock.json'ı kopyala ve bağımlılıkları yükle
 COPY server/package*.json ./
-RUN npm install
+RUN npm install --omit=dev  # Gereksiz dev bağımlılıkları atlamak için
 
-# Uygulama kodunu kopyala
+# Backend kodlarını kopyala
 COPY server ./
 
-# `.env` dosyasını `server` içine taşı
+# `.env` dosyasını backend içine taşı (Eğer varsa)
 COPY .env /server/.env
 
-# 3️⃣ Frontend'in build edilen dosyalarını backend içine KOPYALA
+# Frontend'in build edilen dosyalarını backend içine kopyala
 COPY --from=frontend /client/dist /server/dist
 
-# 4️⃣ Ortam değişkenlerini belirle
+# **EKSİK OLAN:** Node_modules klasörünü backend’e kopyala (Webpack hatası olmaması için)
+COPY --from=frontend /client/node_modules /server/client_node_modules
+
+# Ortam değişkenlerini belirle
 ENV NODE_ENV=production
 EXPOSE 4000
 
-# 5️⃣ Backend'i çalıştır
+# Backend'i çalıştır
 CMD ["node", "src/index.js"]
