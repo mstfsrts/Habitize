@@ -3,7 +3,7 @@ FROM node:18 AS frontend
 WORKDIR /client
 
 COPY client/package*.json ./
-RUN npm install
+RUN npm install --omit=dev
 COPY client ./
 RUN npm run build
 
@@ -11,8 +11,12 @@ RUN npm run build
 FROM node:18 AS backend
 WORKDIR /server
 
+# package.json ve package-lock.json'ı kopyala ve bağımlılıkları yükle
 COPY server/package*.json ./
-RUN npm install
+RUN npm install --omit=dev
+RUN npm rebuild bcrypt --build-from-source  # bcrypti düzeltmek için ekledik
+
+# Uygulama kodunu kopyala
 COPY server ./
 
 # `.env` dosyasını `server` içine taşı
@@ -27,6 +31,3 @@ EXPOSE 4000
 
 # 5️⃣ Backend'i çalıştır
 CMD ["node", "src/index.js"]
-
-
-
