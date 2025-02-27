@@ -28,7 +28,7 @@ module.exports = {
           options: {
             presets: [
               ["@babel/preset-env", { targets: "defaults" }],
-              ["@babel/preset-react", { runtime: "automatic" }]
+              ["@babel/preset-react", { runtime: "automatic" }],
             ],
           },
         },
@@ -38,9 +38,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      'react': path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom'),
-    }
+      react: path.resolve("./node_modules/react"),
+      "react-dom": path.resolve("./node_modules/react-dom"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
