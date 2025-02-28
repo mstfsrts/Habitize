@@ -22,7 +22,7 @@ COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /client/dist /usr/share/nginx/html
 
 # 3000 portunu aç
-EXPOSE 3000
+EXPOSE 3001
 
 # Nginx’i başlat
 CMD ["nginx", "-g", "daemon off;"]
