@@ -15,6 +15,11 @@ app.use("/api/users", userRouter);
 app.use("/api/habits", habitRouter);
 app.use("/api/check-ins", checkInRouter);
 
+// 🚀 Health Check
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.all("api/*", (req, res) => {
   res.status(404).json({
     message: "Route not found",

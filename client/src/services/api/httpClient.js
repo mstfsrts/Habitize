@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = `${process.env.BASE_SERVER_URL}/api`;
+const API_BASE_URL = "http://backend:4000/api";
 
 const httpClient = axios.create({
   baseURL: API_BASE_URL,

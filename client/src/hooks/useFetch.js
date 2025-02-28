@@ -17,7 +17,7 @@ import { useState } from "react";
  * cancelFetch - this function will cancel the fetch, call it when your component is unmounted
  */
 
-const API_BASE_URL = `${process.env.BASE_SERVER_URL}/api`;
+const API_BASE_URL = "http://backend:4000/api";
 
 const createHeaders = (token) => {
   const headers = {
