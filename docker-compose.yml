@@ -13,8 +13,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.7" # Maksimum 70% CPU kullanabilir
-          memory: "700M" # Maksimum 700 MB RAM kullanabilir
+          cpus: "0.5" # Maksimum 50% CPU kullanabilir
+          memory: "512M" # Maksimum 512 MB RAM kullanabilir
 
   frontend:
     build:
@@ -28,5 +28,5 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.7" # Maksimum 70% CPU kullanabilir
-          memory: "700M" # Maksimum 700 MB RAM kullanabilir
+          cpus: "0.5" # Maksimum 50% CPU kullanabilir
+          memory: "512M" # Maksimum 512 MB RAM kullanabilir
