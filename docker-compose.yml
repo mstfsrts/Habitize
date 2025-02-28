@@ -9,7 +9,6 @@ services:
       - .env
     depends_on:
       - frontend
-      - mongodb
     restart: always
 
   frontend:
@@ -17,22 +16,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3001:3001"
     env_file:
       - .env
     restart: always
-
-  mongodb:
-    image: mongo:6
-    container_name: habitize-mongodb
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-volumes:
-  mongo_data:
