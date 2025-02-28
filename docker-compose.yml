@@ -10,6 +10,11 @@ services:
     depends_on:
       - frontend
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7" # Maksimum 70% CPU kullanabilir
+          memory: "700M" # Maksimum 700 MB RAM kullanabilir
 
   frontend:
     build:
@@ -20,3 +25,8 @@ services:
     env_file:
       - .env
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7" # Maksimum 70% CPU kullanabilir
+          memory: "700M" # Maksimum 700 MB RAM kullanabilir
