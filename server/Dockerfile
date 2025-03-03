@@ -8,9 +8,6 @@ RUN npm install --omit=dev  # Production için
 # Backend kodlarını kopyala
 COPY . .
 
-# 🔴 BU SATIRI KALDIR! `.env` dosyasını Docker Compose ile yönetiyoruz.
-# COPY .env .env 
-
 # Ortam değişkenlerini belirle
 ENV NODE_ENV=production
 EXPOSE 4000

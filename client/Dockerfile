@@ -9,19 +9,23 @@ RUN npm install
 # Frontend kodlarını kopyala
 COPY . .
 
-# Build et
-RUN npm run build
+# Build-time environment değişkenini geçir
+ARG REACT_APP_BASE_SERVER_URL
+ENV REACT_APP_BASE_SERVER_URL=$REACT_APP_BASE_SERVER_URL
+
+# Build et ve değişkenin geçmesini sağla
+RUN REACT_APP_BASE_SERVER_URL=$REACT_APP_BASE_SERVER_URL npm run build
 
 # 2️⃣ Nginx ile serve etmek için
 FROM nginx:1.23
 
-# Nginx konfigürasyonunu 3000 portu için ayarla
+# Nginx konfigürasyonunu kopyala
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Frontend’in build dosyasını Nginx’e kopyala
 COPY --from=build /client/dist /usr/share/nginx/html
 
-# 3000 portunu aç
+# 3001 portunu aç
 EXPOSE 3001
 
 # Nginx’i başlat

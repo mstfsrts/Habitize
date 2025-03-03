@@ -46,8 +46,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
-    new webpack.EnvironmentPlugin({
-      BASE_SERVER_URL: "",
+    new webpack.DefinePlugin({
+      "process.env.REACT_APP_BASE_SERVER_URL": JSON.stringify(
+        process.env.REACT_APP_BASE_SERVER_URL,
+      ),
     }),
   ],
   devServer: {

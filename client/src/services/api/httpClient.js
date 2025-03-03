@@ -1,6 +1,11 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://backend:4000/api";
+const API_BASE_URL =
+  process.env.REACT_APP_BASE_SERVER_URL ||
+  "https://t0ggggcs4w0ksw0g08k0cgws.mustafasaritas.me/api";
+
+// eslint-disable-next-line no-console
+console.log("API_BASE_URL:", API_BASE_URL);
 
 const httpClient = axios.create({
   baseURL: API_BASE_URL,
